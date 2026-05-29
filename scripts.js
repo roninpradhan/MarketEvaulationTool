@@ -1,6 +1,7 @@
 const calculateButton = document.querySelector("#calculateButton");
 
 // MAX VALUES FOR LATEST MODELS ---------------------------------------
+
 let estimatedValue = 0;
 
 let ninja300Base = 4500
@@ -16,8 +17,6 @@ let cfmoto675srrBase = 11790;
 
 
 // WEBSITE ERROR ALERTS ---------------------------------------
-
-
 
 calculateButton.addEventListener("click", function () {
     const selectedCondition = document.querySelector('input[name="cosmetic"]:checked');
@@ -196,7 +195,6 @@ function bikeMileage() {
     return 0.45 
 }
 
-
 // Main estimation calculation
 function calculateEstimatedValue() {
     const selectedCondition = document.querySelector('input[name="cosmetic"]:checked').value;
@@ -206,7 +204,6 @@ function calculateEstimatedValue() {
     const selectedRestriction = document.querySelector("#derestriction").value;
     const selectedYear = document.querySelector("#year").value;
     const selectedMileage = document.querySelector("#mileage").value.trim();
-
 
     const modelBasePrices = {
     "Ninja 300": ninja300Base,
@@ -231,7 +228,6 @@ function calculateEstimatedValue() {
         estimatedValue -= estimatedValue * (bikeAge() * 0.02)
     }
 
-
     if(selectedRestriction === "yes"){
         estimatedValue += 1200
     }
@@ -246,8 +242,7 @@ function calculateEstimatedValue() {
         estimatedValue = (estimatedValue * 0.55)
     }
 
-
-
+    // A slipon adds $100 while a full system adds $500
     if(hasAftermarketExhaust()){
         if(hasSlipOnExhaust()){
             estimatedValue += 100;
@@ -256,8 +251,7 @@ function calculateEstimatedValue() {
         }
     }
     
-    //If it has rego add value
-
+    // If it has rego add value, if not loses
     if(!hasRemainingRegistration()){
         estimatedValue -= 700
     } else {
@@ -275,15 +269,17 @@ function calculateEstimatedValue() {
         }
     }
 
-    //If it has two keys add $50 of value
+    // If it has two keys add $50 of value
     if(hasTwoKeys()){
         estimatedValue += 50;
     }
 
+    // Extra modifications only retain about 35% of face value
     if (givenMinorModificationValue) {
         estimatedValue += (givenMinorModificationValue * 0.35)
     }
 
+    // If it has a recorded registration concession it can half the overall value
     if(!hasClearRegistrationConcession()){
         estimatedValue = estimatedValue / 2
     }
