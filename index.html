@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGauge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> MotoGauge</h1> <p1> AU market</p1>
+    </header>
+    <div class="main-row container">
+        <div class="form-sections">
+        <div class="details">
+            <div class="details-heading">
+                <span class="details-step">01</span>
+                <h2>Bike Details</h2>
+            </div>
+
+        <div class="details-grid">  <!-- Groups all bike details input and uses -->
+
+            <div class="details-field">   <!-- groups one label and one input so they stack together -->
+                <label for="brand">Manufacturer</label>
+                <select id="brand" name="brand">
+                    <option value="">Select Make</option>
+                    <option value="kawasaki">Kawasaki</option>
+                    <option value="yamaha">Yamaha</option>
+                    <option value="honda">Honda</option>
+                    <option value="cfmoto">CFMOTO</option>
+                </select>
+            </div>
+
+            <div class="details-field">
+                <label for="model">Model</label>
+                <select id="model">
+                    <option value="">Select Model</option>
+                </select>
+            </div>
+
+        <script>
+            document.getElementById("brand").addEventListener("change", function () {
+                const modelDropdown = document.getElementById("model");
+
+                modelDropdown.innerHTML = '<option value="">Select Model</option>';
+
+                if (this.value === "kawasaki") {
+                    modelDropdown.innerHTML += "<option>Ninja 300</option>";
+                    modelDropdown.innerHTML += "<option>Ninja 400</option>";
+                    modelDropdown.innerHTML += "<option>Ninja 500</option>";
+                    modelDropdown.innerHTML += "<option>Ninja 650</option>";
+                }
+
+                if (this.value === "yamaha") {
+                    modelDropdown.innerHTML += "<option>YZF-R3</option>";
+                    modelDropdown.innerHTML += "<option>YZF-R7LA</option>";
+                }
+
+                if (this.value === "honda") {
+                    modelDropdown.innerHTML += "<option>CBR500R</option>";
+                    modelDropdown.innerHTML += "<option>CBR650R</option>";
+                }
+
+                if (this.value === "cfmoto") {
+                    modelDropdown.innerHTML += "<option>450SR</option>";
+                    modelDropdown.innerHTML += "<option>675SR-R</option>";
+                }
+            });
+        </script>
+
+        <div class="details-field" id="derestrictionSection" style="display: none;">
+            <label for="derestriction">Derestriction</label>
+            <select id="derestriction" name="derestriction">
+                <option value="">Select option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="details-field">
+            <label for="year">Year</label>
+            <select id="year">
+                <option value="">Select Year</option>
+            </select>
+        </div>
+
+        <script>
+            document.getElementById("model").addEventListener("change", function () {
+                const yearDropdown = document.getElementById("year");
+                const derestrictionSection = document.getElementById("derestrictionSection");
+                const derestrictionDropdown = document.getElementById("derestriction");
+
+                yearDropdown.innerHTML = '<option value="">Select Year</option>';
+                derestrictionSection.style.display = "none";
+                derestrictionDropdown.value = "";
+
+                if (this.value === "CBR650R" || this.value === "YZF-R7LA") {
+                    derestrictionSection.style.display = "flex";
+                }
+
+                if (this.value === "Ninja 300") {
+                    yearDropdown.innerHTML += "<option>2013</option>";
+                    yearDropdown.innerHTML += "<option>2014</option>";
+                    yearDropdown.innerHTML += "<option>2015</option>";
+                    yearDropdown.innerHTML += "<option>2016</option>";
+                    yearDropdown.innerHTML += "<option>2017</option>";
+                    yearDropdown.innerHTML += "<option>2018</option>";
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                }
+
+                if (this.value === "Ninja 400") {
+                    yearDropdown.innerHTML += "<option>2018</option>";
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                }
+
+                if (this.value === "Ninja 500") {
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if(this.value === "Ninja 650") {
+                    yearDropdown.innerHTML += "<option>2017</option>";
+                    yearDropdown.innerHTML += "<option>2018</option>";
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "YZF-R3") {
+                    yearDropdown.innerHTML += "<option>2015</option>";
+                    yearDropdown.innerHTML += "<option>2016</option>";
+                    yearDropdown.innerHTML += "<option>2017</option>";
+                    yearDropdown.innerHTML += "<option>2018</option>";
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "YZF-R7LA") {
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "CBR500R") {
+                    yearDropdown.innerHTML += "<option>2013</option>";
+                    yearDropdown.innerHTML += "<option>2014</option>";
+                    yearDropdown.innerHTML += "<option>2015</option>";
+                    yearDropdown.innerHTML += "<option>2016</option>";
+                    yearDropdown.innerHTML += "<option>2017</option>";
+                    yearDropdown.innerHTML += "<option>2018</option>";
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "CBR650R") {
+                    yearDropdown.innerHTML += "<option>2019</option>";
+                    yearDropdown.innerHTML += "<option>2020</option>";
+                    yearDropdown.innerHTML += "<option>2021</option>";
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "450SR") {
+                    yearDropdown.innerHTML += "<option>2022</option>";
+                    yearDropdown.innerHTML += "<option>2023</option>";
+                    yearDropdown.innerHTML += "<option>2024</option>";
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+
+                if (this.value === "675SR-R") {
+                    yearDropdown.innerHTML += "<option>2025</option>";
+                    yearDropdown.innerHTML += "<option>2026</option>";
+                }
+            });
+        </script>
+
+            <div class="details-field">
+                <label for="mileage">Mileage (KM)</label>
+                <input id="mileage" name="mileage" type="text" inputmode="numeric" placeholder="e.g. 12,500">
+            </div>
+        </div>
+    </div>
+
+    <div class="cosmetics">
+
+        <div class="details-heading">
+            <span class="details-step">02</span>
+            <h2>Cosmetic Condition</h2>
+        </div>
+
+        <div class="condition-options" role="radiogroup" aria-label="Cosmetic Condition">
+            <label class="condition-option project-poor">
+                <input type="radio" name="cosmetic" value="projectPoor">
+                <span class="condition-dot"></span>
+                <span>Project/Poor</span>
+            </label>
+            <label class="condition-option rough">
+                <input type="radio" name="cosmetic" value="rough">
+                <span class="condition-dot"></span>
+                <span>Rough</span>
+            </label>
+            <label class="condition-option fair">
+                <input type="radio" name="cosmetic" value="fair">
+                <span class="condition-dot"></span>
+                <span>Fair</span>
+            </label>
+            <label class="condition-option good">
+                <input type="radio" name="cosmetic" value="good">
+                <span class="condition-dot"></span>
+                <span>Good</span>
+            </label>
+            <label class="condition-option excellent">
+                <input type="radio" name="cosmetic" value="excellent">
+                <span class="condition-dot"></span>
+                <span>Excellent</span>
+            </label>
+            <label class="condition-option showroom">
+                <input type="radio" name="cosmetic" value="showroom">
+                <span class="condition-dot"></span>
+                <span>Showroom</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="extras">
+        <div class="details-heading">
+            <span class="details-step">03</span>
+            <h2>3. Extras & Documentation</h2>
+        </div>
+
+        <div class="details-field extra-select-row">
+            <input type="checkbox" id="aftermarketExhaust" name="aftermarketExhaust">
+            <label for="aftermarketExhaust">Aftermarket Exhaust</label>
+            <select id="exhaustType" name="exhaustType">
+                <option value="">Select Exhaust Type</option>
+                <option value="fullSystem">Full system</option>
+                <option value="slipOn">Slip-on</option>
+            </select>
+        </div>
+
+        <div class="details-field extra-select-row">
+            <input type="checkbox" id="regoRemaining" name="regoRemaining">
+            <label for="regoRemaining">Registration</label>
+            <select id="rego" name="rego">
+                <option value="">Select Registration Remaining</option>
+                <option value="threeMonths">1-3 Months</option>
+                <option value="sixMonths">3-6 Months</option>
+                <option value="nineMonths">6-9 Months</option>
+                <option value="twelveMonths">9-12 Months</option>
+            </select>
+        </div>
+
+        <div class="details-field extra-checkbox-row">
+            <input type="checkbox" id="twoKeys" name="twoKeys">
+            <label for="twoKeys">2 Keys</label>
+        </div>
+
+        <div class="details-field extra-checkbox-row">
+            <input type="checkbox" id="logbook" name="logbook">
+            <label for="logbook">Service Logbook</label>
+        </div>
+
+        <div class="details-field extra-checkbox-row">
+            <input type="checkbox" id="registrationConcession" name="registrationConcession">
+            <label for="registrationConcession">Clear Registration Concession</label>
+        </div>
+
+        <div class="details-field">
+            <label for="extraMods">Minor Modification Total:</label>
+            <input id="extraMods" name="extraMods" type="text" inputmode="numeric" placeholder="Enter Estimation">
+        </div>
+
+    </div>
+        </div>
+
+        <aside class="estimation" aria-labelledby="estimationLabel">
+            <div class="estimation-card">
+                <h3 id="estimationLabel">Estimated Market Value</h3>
+                <div class="value-amount" id="estimationDisplay">$0</div>
+                <p class="estimate-basis">Based on model, year, mileage and selected extras.</p>
+
+                <div class="evaluation-key">
+                    <h4>Condition Evaluation Key</h4>
+                    <div class="evaluation-options">
+                        <div class="evaluation-option">
+                            <span class="condition-dot project-poor-dot"></span>
+                            <strong>Project / Poor</strong>
+                            <p>Heavy damage, rust, or missing parts. Requires significant repair before road use.</p>
+                        </div>
+                        <div class="evaluation-option">
+                            <span class="condition-dot rough-dot"></span>
+                            <strong>Rough</strong>
+                            <p>Multiple scratches, dents, or fading. Functional but visibly worn throughout.</p>
+                        </div>
+                        <div class="evaluation-option">
+                            <span class="condition-dot fair-dot"></span>
+                            <strong>Fair</strong>
+                            <p>Noticeable wear and minor damage. Presentable at a distance, imperfect up close.</p>
+                        </div>
+                        <div class="evaluation-option">
+                            <span class="condition-dot good-dot"></span>
+                            <strong>Good</strong>
+                            <p>Light scuffs or small marks only. Well maintained with no major cosmetic issues.</p>
+                        </div>
+                        <div class="evaluation-option">
+                            <span class="condition-dot excellent-dot"></span>
+                            <strong>Excellent</strong>
+                            <p>Near perfect condition. Minimal signs of use, clean bodywork and no damage.</p>
+                        </div>
+                        <div class="evaluation-option">
+                            <span class="condition-dot showroom-dot"></span>
+                            <strong>Showroom</strong>
+                            <p>Flawless. Looks new or fully restored. No scratches, marks, or wear visible.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="estimate-notice">Final estimate may vary after inspection and local market demand.</p>
+                <!-- keep original input for compatibility with existing scripts; hidden visually -->
+                <input type="text" id="estimation" readonly aria-hidden="true">
+                <button type="button" id="calculateButton" class="calculate-button">Calculate Value</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
